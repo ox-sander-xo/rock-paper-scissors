@@ -1,3 +1,24 @@
+const rock = document.getElementById('rock');
+const paper = document.getElementById('paper');
+const scissors = document.getElementById('scissors');
+
+let computerChoice = getComputerChoice();
+
+rock.addEventListener('click', function()  {
+  // using getHumanChoice now but may need to alter this fuction later
+  playRound("rock", computerChoice)
+})
+
+paper.addEventListener('click', function() {
+  // using getHumanChoice now but may need to alter this fuction later
+  playRound("paper", computerChoice)
+})
+
+scissors.addEventListener('click', function() {
+  // using getHumanChoice now but may need to alter this fuction later
+  playRound("scissors", computerChoice)
+})
+
 // Computer choice logic
 
 function getComputerChoice () {
@@ -80,14 +101,16 @@ function getComputerChoice () {
  function playGame() { 
      let result;
  
-     while (rounds < 5){
-       let computerChoice = getComputerChoice();
-       let humanChoice = getHumanChoice();
-       console.log(computerChoice)
-       console.log(humanChoice)
-       console.log(rounds)
-       playRound(humanChoice, computerChoice)
-     }
+// commented out below code as prompted by "revisiting" instructions #2:2 
+
+    //  while (rounds < 5){
+    //    let computerChoice = getComputerChoice();
+    //    let humanChoice = getHumanChoice();
+    //    console.log(computerChoice)
+    //    console.log(humanChoice)
+    //    console.log(rounds)
+    //    playRound(humanChoice, computerChoice)
+    //  }
      
      if (humanScore > computerScore){
          result = alert('congratulations! You Win!')
