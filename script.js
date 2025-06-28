@@ -28,7 +28,7 @@ const buttons = document.querySelectorAll('.game-buttons');
 
 // Computer choice logic
 
-let computerChoice = getComputerChoice();
+
 
 function getComputerChoice () {
     let math = Math.floor(Math.random() * 3)
@@ -108,13 +108,14 @@ function getComputerChoice () {
  //Play game
  function playGame() { 
      let result;
+     let computerChoice = getComputerChoice();
      playRound(playerChoice, computerChoice)
      if (rounds > 5) {
         playRound(playerChoice, computerChoice)
      }
      if (rounds === 5) {
         if (humanScore > computerScore) {
-         result = prompt('congratulations! You Win!')
+         result = alert('congratulations! You Win!')
          } else if (humanScore < computerScore) {
          result = alert('The computer won this one. try again!')
          } else (humanScore === computerScore) 
@@ -122,8 +123,8 @@ function getComputerChoice () {
  }
          
          numberOfRounds.textContent = `Round ${rounds}!`;
-         yourScore.textContent = `You: ${humanScore}`;
-         compScore.textContent = `Computer: ${computerScore}`;
+         yourScore.textContent = `Your score: ${humanScore}`;
+         compScore.textContent = `Computer score: ${computerScore}`;
      return result;
    } 
  
