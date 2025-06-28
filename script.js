@@ -46,7 +46,7 @@ function getComputerChoice () {
  
  
  //Play round 
- let rounds = 0;
+ let rounds = 1;
  let computerScore = 0;
  let humanScore = 0;
 
@@ -109,12 +109,17 @@ function getComputerChoice () {
  function playGame() { 
      let result;
      playRound(playerChoice, computerChoice)
-     if (rounds === 5 && humanScore > computerScore) {
-         result = alert('congratulations! You Win!')
-         } else if (rounds === 5 && humanScore < computerScore) {
+     if (rounds > 5) {
+        playRound(playerChoice, computerChoice)
+     }
+     if (rounds === 5) {
+        if (humanScore > computerScore) {
+         result = prompt('congratulations! You Win!')
+         } else if (humanScore < computerScore) {
          result = alert('The computer won this one. try again!')
-         } else (rounds === 5 && humanScore === computerScore) 
+         } else (humanScore === computerScore) 
          result = alert('The computer won this one. try again!')
+ }
          
          numberOfRounds.textContent = `Round ${rounds}!`;
          yourScore.textContent = `You: ${humanScore}`;
