@@ -8,17 +8,36 @@
     <title>Document</title>
 </head>
  <body>
-    <div>
-     <button class="game-buttons" id="rock">Rock</button>
-     <button class="game-buttons" id="paper">Paper</button>
-     <button class="game-buttons" id="scissors">Scissors</button>
+    <div class="round">
+     <p id="number-of-rounds"> Round 1</p>
     </div>
 
-    <div class="game-results">
-
-        <p id="number-of-rounds"> Round 1!</p>
-        <p id="your-score">Your score:</p>
-        <p id="computer-score">Computer score:</p>
+    <div class="choices">
+     <button class="game-buttons" id="rock" data-choice="rock">
+        <img src="images/paw-rock.jpg" alt="paw-rock" height="200px">
+    </button>
+     <button class="game-buttons" id="paper" data-choice="paper">
+        <img src="images/paw-paper.jpg" alt="paw-paper" height="200px">
+    </button>
+     <button class="game-buttons" id="scissors" data-choice="scissors">
+        <img src="images/paw-scissors.jpg" alt="paw-scissors" height="200px">
+    </button>
     </div>
+
+      <div class="score">
+        <div class="player">
+         <p>Player:</p>
+           <p id="your-score"></p>
+           <p id="your-choice"></p>  
+        </div>
+        <div class="computer">
+         <p>Computer:</p>
+          <p id="computer-score"></p>
+         <p id="comps-choice"></p>  
+        </div>
+     </div>
+
+        <p id="read-out">Good luck!</p>
+
  </body>
-</html>
+</html></p>

@@ -1,0 +1,84 @@
+* {
+    box-sizing: content-box;
+}
+
+body {
+    background: linear-gradient(45deg, #50424f, black );
+}
+
+.round {
+    display: flex;
+    justify-content: center;
+}
+
+ @font-face {
+        font-family: 'bungee-shade';
+         src: url("fonts/bungee-shade.ttf");
+        }
+
+#number-of-rounds {
+font-family: 'bungee-shade';
+font-weight: 800;
+font-size: xx-large;
+color: pink;
+}
+
+.choices {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.game-buttons {
+    border-radius: 15px;
+    box-shadow: 0 5px 0 #4b52a3;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.game-buttons:active {
+  transform: translateY(5px);
+  box-shadow: 0 0 0 #4b52a3;
+}
+
+.score {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin: 30px;
+}
+
+.player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color:#e4d8e3;
+  width: 240px;
+  height: 240px;
+  font-size: x-large;
+  font-weight: 600;
+  border-radius: 20px;
+}
+
+.computer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color:#e4d8e3;
+  width: 240px;
+  height: 240px;
+  font-size: x-large;
+  font-weight: 600;
+  border-radius: 20px;
+}
+
+  #read-out {
+  display: flex;
+  justify-content: center;
+  font-family: 'bungee-shade';
+  font-weight: 800;
+  font-size: xx-large;
+  color: pink;
+}
+

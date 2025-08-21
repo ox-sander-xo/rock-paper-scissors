@@ -2,27 +2,15 @@ const rock = document.getElementById('rock');
 const paper = document.getElementById('paper');
 const scissors = document.getElementById('scissors');
 
-// rock.addEventListener('click', function()  {
-//   playRound("rock", computerChoice)
-// });
-// paper.addEventListener('click', function() {
-//   playRound("paper", computerChoice)
-// });
-// scissors.addEventListener('click', function() {
-//   playRound("scissors", computerChoice)
-// });
-
-
 let playerChoice = ''; 
 
 const buttons = document.querySelectorAll('.game-buttons');
 
  buttons.forEach(button => {
   button.addEventListener('click', (event) => {
-    playerChoice = button.textContent.toLocaleLowerCase();
+    playerChoice = button.dataset.choice;
     playGame(); 
     console.log(playerChoice)
-    // document.getElementById('output').textContent = `You picked: ${playerChoice}`;
   });
 });
 
@@ -52,14 +40,19 @@ function getComputerChoice () {
 
      const numberOfRounds = document.getElementById('number-of-rounds');
      const yourScore = document.getElementById('your-score');
+     const yourChoice = document.getElementById('your-choice');
      const compScore = document.getElementById('computer-score');
+     const compsChoice = document.getElementById('comps-choice')
+     const readOut = document.getElementById('read-out');
+     const playerDiv = document.querySelectorAll('.player')
+     const computerDiv = document.querySelectorAll('.computer')
 
 
  function playRound(human, computer) {
-     let thisRound;
  console.log(human, computer)
      if (human === computer) {
-     thisRound = alert('Draw! Try again.')
+     playerDiv[0].style.backgroundColor = 'rgb(108, 195, 235)';
+     computerDiv[0].style.backgroundColor = 'rgb(108, 195, 235)';
      } else if (human === 'rock') {
      thisRound = rockChoice(human, computer);
      } else if (human === 'paper') {
@@ -68,18 +61,19 @@ function getComputerChoice () {
      thisRound = scissorsChoice(human, computer)
      } 
      rounds ++;
-     return thisRound
-     console.log(thisRound)
  } 
   
  function rockChoice(human, computer){
-     let result 
      if (computer === 'paper'){
          computerScore++
-        //  alert('Paper beats Rock!') 
+         playerDiv[0].style.backgroundColor = 'rgb(235, 108, 108)';
+         computerDiv[0].style.backgroundColor = 'rgb(108, 235, 140)';
+         console.log(playerDiv);
      } else {
          humanScore++
-        //  alert('Rock beats Scissors!')
+          playerDiv[0].style.backgroundColor = 'rgb(108, 235, 140)';
+          computerDiv[0].style.backgroundColor = 'rgb(235, 108, 108)';
+          console.log(playerDiv);
          console.log(humanScore)
      }
  }
@@ -87,46 +81,81 @@ function getComputerChoice () {
  function paperChoice(human, computer) {
      if (computer === 'scissors'){
          computerScore++
-        //  alert('Scissors beats Paper!')
+         playerDiv[0].style.backgroundColor = 'rgb(235, 108, 108)';
+         computerDiv[0].style.backgroundColor = 'rgb(108, 235, 140)';
      } else {
          humanScore++
-        //  alert('Paper beats Rock!')
-     }
+         playerDiv[0].style.backgroundColor = 'rgb(108, 235, 140)';
+         computerDiv[0].style.backgroundColor = 'rgb(235, 108, 108)';
+     }  
  }
  
  function scissorsChoice(human, computer) {
      if (computer === 'rock'){
          computerScore++
-        //  alert('Rock beats Scissors!')
+         playerDiv[0].style.backgroundColor = 'rgb(235, 108, 108)';
+         computerDiv[0].style.backgroundColor = 'rgb(108, 235, 140)';
      } else {
          humanScore++
-        //  alert('Scissors beats Paper!')
+         playerDiv[0].style.backgroundColor = 'rgb(108, 235, 140)';
+         computerDiv[0].style.backgroundColor = 'rgb(235, 108, 108)';
      }
+ }
+
+ function resetGame(){
+    rounds = 1;
+    computerScore = 0;
+    humanScore = 0;
+    playerDiv[0].style.backgroundColor = '#e4d8e3';
+    computerDiv[0].style.backgroundColor = '#e4d8e3';
+ 
+    numberOfRounds.textContent = `Round ${rounds}!`;
+    yourScore.textContent = `${humanScore}`;
+    yourChoice.textContent = '';
+    compScore.textContent = `${computerScore}`;
+    compsChoice.textContent = '';
+    readOut.textContent = 'Good Luck!';
  }
  
  
  //Play game
  function playGame() { 
-     let result;
-     let computerChoice = getComputerChoice();
-     playRound(playerChoice, computerChoice)
-     if (rounds > 5) {
-        playRound(playerChoice, computerChoice)
-     }
-     if (rounds === 5) {
-        if (humanScore > computerScore) {
-         result = alert('congratulations! You Win!')
-         } else if (humanScore < computerScore) {
-         result = alert('The computer won this one. try again!')
-         } else (humanScore === computerScore) 
-         result = alert('The computer won this one. try again!')
- }
+  let computerChoice = getComputerChoice();
+   let round = playRound(playerChoice, computerChoice);
+    readOut.textContent = round;
+    console.log(round)
+
+    let endGame;
+    if (rounds === 6) {
+        rounds = 5
+     if (humanScore === computerScore) {
+      endGame = 'The game is a draw! try again!'
+      }
          
-         numberOfRounds.textContent = `Round ${rounds}!`;
-         yourScore.textContent = `Your score: ${humanScore}`;
-         compScore.textContent = `Computer score: ${computerScore}`;
-     return result;
-   } 
- 
+      if (humanScore > computerScore) {
+       endGame = 'congratulations! You Win!';
+      }
+
+       if (humanScore < computerScore) {
+        
+        endGame = 'The computer won this one. try again!';
+      }
+      readOut.textContent = endGame
+
+      setTimeout(() => {
+      if (confirm('Game over! Do you want to play again?')) {
+        resetGame();
+      }
+      }, 1500);
+    } 
+
+    numberOfRounds.textContent = `Round ${rounds}!`;
+    yourScore.textContent = `${humanScore}`;
+    yourChoice.textContent = `${playerChoice}`
+    compScore.textContent = ` ${computerScore}`;
+    compsChoice.textContent = `${computerChoice}`
+  return endGame;
+ }
+
 //  playGame();
  
